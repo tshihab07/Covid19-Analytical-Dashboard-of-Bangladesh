@@ -6,6 +6,8 @@
 - [Data Source](#data-source)
     - [Dataset Description](#data-description)
 - [Key Features](#key-features)
+    - [Filters & Slicers](#filters-&-slicers)
+    - [Visual Components](#visual-components)
 - [Installation](#installation)
 - [File Structure](#file-structure)
 - [Methodology](#methodoloogy)
