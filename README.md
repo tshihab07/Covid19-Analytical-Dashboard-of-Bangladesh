@@ -96,27 +96,38 @@ Here are the most useful visuals included in the final dashboard:
 This repository contains the following files:
 ```bash
 COVID-19-ANALYTICAL-DASHBOARD/
-├── .pbi
-│   ├── bg2848537029008278.jpg
+├── AnalyticalDashboard.Report/
+│   ├── .pbi/
+│   |   └── localSettings.json
+│   ├── StaticResources/
+│   |   └── RegisteredResources/
+│   |       └── bg2848537029008278.jpg
 │   ├── SharedResources/
-│   │   ├── BaseThemes/
 │   │   │   └── CY24SU08.json
 │   │   ├── definition.pbir
 │   │   ├── report.json
-│   ├── AnalyticalDashboard.SemanticModel/
+├── AnalyticalDashboard.SemanticModel/
 │   │   ├── .platform
 │   │   ├── definition.pbism
 │   │   ├── diagramLayout.json
 │   │   └── model.bim
-│   ├── files/
+├── files/
 │   │   ├── bg-template.pptx
 │   │   ├── covid_dataset_cleaned.csv
 │   │   ├── covid_dataset_unpivot.csv
 │   │   └── covid_dataset.csv
-│   ├── graphs/
+├── graphs/
 │   │   ├── boxplots.png
 │   │   ├── CaseRate_VS_DeathsRate_Relation.png
 │   │   └── ConfirmedCase_VS_CaseRate_Relation.png
+├── output
+│   ├── bg.jpg
+│   ├── dashboard.png
+│   ├── initial_dashboard_design.jpg
+├── .gitignore
+├── AnalyticalDashboard.pbix
+├── AnalyticalDashboard.pbip
+├── data_preprocessing.ipynb
 └── README.md
 ```
 
