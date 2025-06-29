@@ -98,10 +98,10 @@ This repository contains the following files:
 COVID-19-ANALYTICAL-DASHBOARD/
 ├── AnalyticalDashboard.Report/
 │   ├── .pbi/
-│   |   └── localSettings.json
+│   │   │   └── localSettings.json
 │   ├── StaticResources/
-│   |   └── RegisteredResources/
-│   |       └── bg2848537029008278.jpg
+│   │   │   └── RegisteredResources/
+│   │   │   │   └── bg2848537029008278.jpg
 │   ├── SharedResources/
 │   │   │   └── CY24SU08.json
 │   │   ├── definition.pbir
