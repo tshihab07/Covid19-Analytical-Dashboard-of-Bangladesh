@@ -154,8 +154,8 @@ Handling missing values was done carefully based on the type of metric:
     - Remaining missing values (e.g., at start/end of time series) were filled using forward/backward fill.
 
 This ensures:
-    - No artificial rates appear where no cases existed
-    - Smooth trends where data was sparse but active
+- No artificial rates appear where no cases existed
+- Smooth trends where data was sparse but active
 
 ### 4. Outliers Treatment
 Outliers can distort visualizations and analysis. To handle them effectively:
