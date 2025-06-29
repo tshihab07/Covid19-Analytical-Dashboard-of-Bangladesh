@@ -1,0 +1,636 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"data\",\"measurements\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.136.1202.0 (24.09)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "3e742f41-c892-0339-bf7a-04ebdc0a3aaa",
+        "fromColumn": "Date",
+        "fromTable": "data",
+        "toColumn": "Date",
+        "toTable": "DateTable"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "data",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "41a128b5-406a-4dbb-80c5-f4769f9e7836",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Division",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c9ac4db-b263-4d7d-9451-43b8fa9e4f08",
+            "sourceColumn": "Division",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Confirmed Cases",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "1563fa3e-1e2a-4c85-b076-336f49ffd523",
+            "sourceColumn": "Confirmed Cases",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Deaths",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4e3b4e9a-4792-43e2-99e8-3134197a00b6",
+            "sourceColumn": "Deaths",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Case Rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e4033700-6c9c-4ac8-a136-d5f58fde7c52",
+            "sourceColumn": "Case Rate",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Death Rate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "910b0f8a-1f0b-46e1-b60c-d1097f16ef63",
+            "sourceColumn": "Death Rate",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "8bd11fd0-c64a-419f-bed7-2a15ec42bb91",
+        "partitions": [
+          {
+            "name": "data",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"F:\\03. Python Programming\\09 Data Science\\01 AnalyticalDashboards\\PowerBI\\20250605_PBIV06_Covid19DataAnalysis\\Covid19-Analytical-Dashboard-of-Bangladesh\\files\\covid_dataset_unipivot.csv\"),[Delimiter=\",\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Date\", type date}, {\"Division\", type text}, {\"Confirmed Cases\", Int64.Type}, {\"Deaths\", Int64.Type}, {\"Case Rate\", Int64.Type}, {\"Death Rate\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTable",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "e18fc4972f864a24a6ea1120241da1af"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "isDataTypeInferred": true,
+            "isKey": true,
+            "isNameInferred": true,
+            "lineageTag": "8233e4bd-73a2-468d-934a-95203f325346",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "03530c9a-5f58-4d92-835b-94ca727fb663",
+            "sourceColumn": "[Year]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "85621988-28a8-46c2-9404-461725d24381",
+            "sortByColumn": "Month Number",
+            "sourceColumn": "[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "55e8ae78-8142-4cc2-9b0e-4eba3bd84f98",
+            "sourceColumn": "[Month Number]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "7bfcdfad-50b2-463b-8386-7f726a6da504",
+            "sourceColumn": "[Day]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "YearMonth",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4f0bcea7-7173-4112-860e-5c4c759790be",
+            "sourceColumn": "[YearMonth]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "dataCategory": "Time",
+        "hierarchies": [
+          {
+            "name": "months",
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "f4aa9bbc-7d1f-4d5e-9f3e-c5552cb4d69a",
+                "ordinal": 0
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "3aa99ed0-5a01-434e-90b9-91e089db6bb6",
+                "ordinal": 1
+              }
+            ],
+            "lineageTag": "91d4a267-56b8-4255-a3d3-7a7b7508804c"
+          }
+        ],
+        "lineageTag": "475bfa9c-fc6a-4539-a7dc-cebd5b332beb",
+        "partitions": [
+          {
+            "name": "DateTable",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "ADDCOLUMNS(",
+                "    CALENDAR(DATE(2020,3,6), DATE(2021,7,2)),",
+                "    \"Year\", YEAR([Date]),",
+                "    \"Month\", FORMAT([Date], \"MMM\"),",
+                "    \"Month Number\", MONTH([Date]),",
+                "    \"Day\", DAY([Date]),",
+                "    \"YearMonth\", FORMAT([Date], \"MM-YYYY\")",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "measurements",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f7d9c4ca-5c22-4a41-a183-8ddf8663f08f",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c2a2d954-2967-42f2-a43d-23d4d13009ca",
+        "measures": [
+          {
+            "name": "Total Confirmed Cases",
+            "expression": "SUM('data'[Confirmed Cases])",
+            "formatString": "0.00",
+            "lineageTag": "b17fcef0-a606-4bf6-97da-8741d803b37b"
+          },
+          {
+            "name": "Case Fatality Rate",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "DIVIDE(",
+              "    [Total Deaths], [Total Confirmed Cases])"
+            ],
+            "lineageTag": "c97749df-910b-4657-a6cf-29b04ab8da87"
+          },
+          {
+            "name": "Total Deaths",
+            "expression": [
+              "",
+              "DIVIDE(SUM('data'[Deaths]), DISTINCTCOUNT(data[Division]))",
+              " "
+            ],
+            "formatString": "0.00",
+            "lineageTag": "e4d4ee5a-5740-4ec2-95a8-ddfe32127941"
+          },
+          {
+            "name": "Total Survival",
+            "expression": "[Total Confirmed Cases] - [Total Deaths]",
+            "formatString": "0.00",
+            "lineageTag": "6a050a34-f26f-49c0-b2ef-544abef02b0b"
+          },
+          {
+            "name": "Bar Chart Caption",
+            "expression": [
+              "",
+              "VAR _SelectedMeasure = SELECTEDVALUE('CvS By Division'[Switch Situation Order])",
+              "RETURN",
+              "IF( _SelectedMeasure = 0, \"Confirmed By Division\", \"Survival By Dvision\")"
+            ],
+            "lineageTag": "c0fe9dd3-d20c-4e4b-b6d6-0a5e64a87a44"
+          },
+          {
+            "name": "Line Chart Caption",
+            "expression": [
+              "",
+              "VAR _SelectedMeasure = SELECTEDVALUE('CvS By Time'[CvS By Time Order])",
+              "RETURN",
+              "IF( _SelectedMeasure = 0, \"Confirmed vs Death All Division\", \"Survival vs Death All Division\")"
+            ],
+            "lineageTag": "619683e9-a3a9-4b0c-8dc3-a41a7e83fc11"
+          },
+          {
+            "name": "Death Rate",
+            "expression": "DIVIDE([Total Deaths],  [Total Confirmed Cases], 0)",
+            "formatString": "0.0%;-0.0%;0.0%",
+            "lineageTag": "ecdf64a8-2ea2-4bf7-b3ca-34695b196c3c"
+          },
+          {
+            "name": "Survival Rate",
+            "expression": "DIVIDE([Total Survival],  [Total Confirmed Cases], 0)",
+            "formatString": "0.0%;-0.0%;0.0%",
+            "lineageTag": "1c7802f3-0539-4a2e-99d3-264a4b784d23"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "measurements",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CvS By Division",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "de12138bb5694ad582fe34bb7a799407"
+          }
+        ],
+        "columns": [
+          {
+            "name": "By Division",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "52256dcb-04b9-4f08-a4d7-ea0df95cf21d",
+            "relatedColumnDetails": {
+              "groupByColumns": [
+                {
+                  "groupingColumn": "Switch Situation Fields"
+                }
+              ]
+            },
+            "sortByColumn": "Switch Situation Order",
+            "sourceColumn": "[Value1]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Switch Situation Fields",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": {
+                  "kind": 2,
+                  "version": 3
+                }
+              }
+            ],
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": false,
+            "lineageTag": "1944a0e4-d686-46fd-b6bb-2a0f6c627f73",
+            "sortByColumn": "Switch Situation Order",
+            "sourceColumn": "[Value2]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Switch Situation Order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": false,
+            "lineageTag": "ce9a9d4b-ed23-42bd-b563-410ff5d03f31",
+            "sourceColumn": "[Value3]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "e40af569-14ba-4303-8a7f-417d19b0b6d0",
+        "partitions": [
+          {
+            "name": "CvS By Division",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "{",
+                "    (\"Total Confirmed\", NAMEOF('measurements'[Total Confirmed Cases]), 0),",
+                "    (\"Total Survival\", NAMEOF('measurements'[Total Survival]), 1)",
+                "}"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CvS By Time",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "9aaa5acf12ee48d38068d5321a343074"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CvS By Time",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": false,
+            "lineageTag": "8cb03e68-590c-4531-ae3e-6981f75a9d0d",
+            "relatedColumnDetails": {
+              "groupByColumns": [
+                {
+                  "groupingColumn": "CvS By Time Fields"
+                }
+              ]
+            },
+            "sortByColumn": "CvS By Time Order",
+            "sourceColumn": "[Value1]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "CvS By Time Fields",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": {
+                  "kind": 2,
+                  "version": 3
+                }
+              }
+            ],
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": false,
+            "lineageTag": "a8f66346-0e5e-461b-b0fa-0f7975866826",
+            "sortByColumn": "CvS By Time Order",
+            "sourceColumn": "[Value2]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "CvS By Time Order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": false,
+            "lineageTag": "04c97b1c-18ff-468c-99ee-4fb85db23307",
+            "sourceColumn": "[Value3]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "c39e488e-92a2-40f1-bf46-ef980499a618",
+        "partitions": [
+          {
+            "name": "CvS By Time",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "{",
+                "    (\"Total Confirmed\", NAMEOF('measurements'[Total Confirmed Cases]), 0),",
+                "    (\"Total Survival\", NAMEOF('measurements'[Total Survival]), 1)",
+                "}"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 71
+          },
+          "nodeIndex": "data",
+          "nodeLineageTag": "8bd11fd0-c64a-419f-bed7-2a15ec42bb91",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 323,
+            "y": 0
+          },
+          "nodeIndex": "DateTable",
+          "nodeLineageTag": "475bfa9c-fc6a-4539-a7dc-cebd5b332beb",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 607,
+            "y": 95.5
+          },
+          "nodeIndex": "measurements",
+          "nodeLineageTag": "c2a2d954-2967-42f2-a43d-23d4d13009ca",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 891,
+            "y": 71.5
+          },
+          "nodeIndex": "CvS By Division",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1175,
+            "y": 71.5
+          },
+          "nodeIndex": "CvS By Time",
+          "nodeLineageTag": "c39e488e-92a2-40f1-bf46-ef980499a618",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
