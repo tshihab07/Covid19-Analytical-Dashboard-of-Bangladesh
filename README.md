@@ -11,6 +11,11 @@
 - [Installation](#installation)
 - [File Structure](#file-structure)
 - [Methodology](#methodoloogy)
+    - [Data Cleaning & Processing](#1-data-cleaning-&-processing)
+    - [Exploratory Data Analysis](#2-exploratory-data-analysis)
+    - [Missing Value Handling](#3-Missing-Value-Handling)
+    - [Outliers Treatment](#4-outliers-treatment)
+    - [Feature Engineering](#5-feature-engineering)
 - [Usage](#usage)
 - [Insights](#insights)
 - [Technology Used](#technology-used)
@@ -43,28 +48,31 @@ All values are **cleaned**, **normalized**, and **processed**. Missing values we
 
 ## Key Features
 
-### Filters & Slicers:
+### Filters & Slicers
 - **Division Slicer**: Select division to see individual analysis
 - **Metric Slicers**: Toggle between Confirmed/Deaths/Survival
 
-### Visual Components:
-The dashboard includes the following key visuals:
+### Visual Components
+Here are the most useful visuals included in the final dashboard:
 
-1. Total Metrics :
-    - Total Confirmed Cases
-    - Total Deaths
-    - Survival Rate
-    - Death Rate
+1. **Time-Series Analysis**
+    - Line chart showing trends over time for confirmed cases vs deaths and confirmed case vs survival.
+    - Filterable by metric selector.
 
-2. Division-wise Analysis :
-    - Bar chart: Survival rate by division.
-    - Line chart: Confirmed vs. Deaths over time.
-    - Table: Detailed metrics per division (Confirmed Cases, Deaths, Survival Rate, Death Rate).
+2. **Division-wise Comparison**
+    - Clustered bar charts comparing total confirmed cases vs Survival
+    - Impact table showing confrimed cases, deaths, survival rate, case rate, death rate for each division.
 
-3. Time Series Analysis :
-    - Line charts showing trends in confirmed cases, deaths, and rates over time.
+4. **Distribution Charts**
+    - Donut chart displaying overall survival rate and death rate across Bangladesh
+    - Bar chart displaying total confirmed cases for each division
 
-4. Interactive Filters :
+5. **Summary Metrics**
+    - Total confirmed cases
+    - Total deaths
+    - Total Survival
+
+6. **Interactive Filters**
     - Division selector to filter visuals dynamically.
 
 
@@ -115,20 +123,49 @@ COVID-19-ANALYTICAL-DASHBOARD/
 
 ## Methodology
 
-### 1. **Data Cleaning & Processing**
-- Filled missing values using `group-wise median imputation`
-- Converted wide format to long format (unpivoted)
-- Standardized dates and formatted correctly
-- Removed fully-NaN rows
-- Treated outliers using IQR and Z-score where appropriate
+### 1. Data Cleaning & Processing
+Before importing the data into Power BI, it underwent several important preprocessing steps in Python:
 
-### 2. **Exploratory Data Analysis**
+1. Date Formatting
+    - The `Date` column was parsed correctly using `pd.to_datetime()` with a custom format.
+    - Missing or inconsistent dates were coerced to `NaT` and corrected if possible.
+2. Data Type Handling
+    - All numeric columns were converted to numeric types using pd.to_numeric().
+    - Non-numeric values were set to `NaN` and later handled appropriately.
+3. Column Renaming & Division List
+    - Standardized column names for consistency.
+    - Defined list of divisions: `Barisal`, `Chittagong`, `Dhaka`, `Khulna`, `Mymensingh`, `Rajshahi`, `Rangpur`, `Sylhet`.
+
+### 2. Exploratory Data Analysis
 - **Histograms**: To analyze distributions
 - **Boxplots**: To detect outliers
 - **Scatter Plots**: To explore correlations between case rate and death rate
-- **Heatmaps**: For correlation among features
 
-### 3. **Feature Engineering**
+### 3. Missing Value Handling
+Handling missing values was done carefully based on the type of metric:
+
+1. Confirmed Cases & Deaths
+    - These represent real-world events — missing values likely mean no activity .
+    - Therefore, all missing values in these columns were filled with 0.
+
+2. Rate Columns (Case Rate, Death Rate)
+    - Rates should only be calculated when there are confirmed cases or deaths.
+    - We interpolated rate values only where confirmed cases > 0 , to avoid introducing false trends.
+    - Remaining missing values (e.g., at start/end of time series) were filled using forward/backward fill.
+
+This ensures:
+    - No artificial rates appear where no cases existed
+    - Smooth trends where data was sparse but active
+
+### 4. Outliers Treatment
+Outliers can distort visualizations and analysis. To handle them effectively:
+We applied a **`rolling window approach`** to detect and cap extreme values dynamically where each division’s confirmed cases and deaths were processed separately.
+
+This helps:
+ - Reduce noise while preserving actual surges
+ - Prevent false peaks from distorting visualizations
+
+### 5. Feature Engineering
 - `Total Survival` = `Confirmed Cases` - `Deaths`
 - `Survival Rate` = `(Total Survival / Confirmed Cases) * 100`
 - `Death Rate` = `(Deaths / Confirmed Cases) * 100`
