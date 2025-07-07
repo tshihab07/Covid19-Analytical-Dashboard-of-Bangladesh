@@ -32,7 +32,7 @@ This repository contains an analytical dashboard built using Power BI to visuali
 
 ## Data Source
 
-The dataset used in this project is sourced from Kaggle. To get data used in this project click [Dataset](https://www.kaggle.com/datasets/rashikrahmanpritom/covid19-cases-in-bangladesh-dataset) .This dataset contains covid cases of all the divisions in bangladesh from 1st March 2020 to 2nd July 2021.
+The dataset used in this project is sourced from Kaggle. To get data used in this project, click [Dataset](https://www.kaggle.com/datasets/rashikrahmanpritom/covid19-cases-in-bangladesh-dataset). This dataset contains COVID-19 cases of all the divisions in Bangladesh from 1st March 2020 to 2nd July 2021.
 
 ### Dataset Description
 | Column Name                 | Description                             |
@@ -44,7 +44,8 @@ The dataset used in this project is sourced from Kaggle. To get data used in thi
 | Case Rate                   | Cases per 100,000 population (estimated)|
 | Death Rate                  | Deaths per 100,000 population (estimated)|
 
-All values are **cleaned**, **normalized**, and **processed**. Missing values were handled using `interpolation` and `forward fill` due to skewed and time series.
+All values are **cleaned**, **normalized**, and **processed**. Missing values were handled using `interpolation` and `forward fill` due to skewed time series.
+
 
 ## Key Features
 
@@ -56,15 +57,15 @@ All values are **cleaned**, **normalized**, and **processed**. Missing values we
 Here are the most useful visuals included in the final dashboard:
 
 1. **Time-Series Analysis**
-    - Line chart showing trends over time for confirmed cases vs deaths and confirmed case vs survival.
+    - Line chart showing trends over time for confirmed cases vs deaths and confirmed cases vs survival.
     - Filterable by metric selector.
 
 2. **Division-wise Comparison**
     - Clustered bar charts comparing total confirmed cases vs Survival
-    - Impact table showing confrimed cases, deaths, survival rate, case rate, death rate for each division.
+    - Impact table showing confirmed cases, deaths, survival rate, case rate, and death rate for each division.
 
 4. **Distribution Charts**
-    - Donut chart displaying overall survival rate and death rate across Bangladesh
+    - Donut chart displaying the overall survival rate and death rate across Bangladesh
     - Bar chart displaying total confirmed cases for each division
 
 5. **Summary Metrics**
@@ -161,8 +162,8 @@ Handling missing values was done carefully based on the type of metric:
 
 2. Rate Columns (Case Rate, Death Rate)
     - Rates should only be calculated when there are confirmed cases or deaths.
-    - We interpolated rate values only where confirmed cases > 0 , to avoid introducing false trends.
-    - Remaining missing values (e.g., at start/end of time series) were filled using forward/backward fill.
+    - We interpolated rate values only where confirmed cases > 0, to avoid introducing false trends.
+    - Remaining missing values (e.g., at the start/end of the time series) were filled using forward/backward fill.
 
 This ensures:
 - No artificial rates appear where no cases existed
@@ -170,7 +171,7 @@ This ensures:
 
 ### 4. Outliers Treatment
 Outliers can distort visualizations and analysis. To handle them effectively:
-We applied a **`rolling window approach`** to detect and cap extreme values dynamically where each division’s confirmed cases and deaths were processed separately.
+We applied a **`rolling window approach`** to detect and cap extreme values dynamically, where each division’s confirmed cases and deaths were processed separately.
 
 This helps:
  - Reduce noise while preserving actual surges
@@ -185,11 +186,11 @@ This helps:
 ## Usage
 
 1. Install Required Tools
-    - Power BI Desktop : Download and install from Microsoft Power BI .
+    - Power BI Desktop: Download and install from Microsoft Power BI.
     - Python (Optional): If you want to reproduce the data cleaning steps.
 
 2. Open the Power BI Report
-    - Open Power BI Desktop .
+    - Open Power BI Desktop.
     - Navigate to the .pbi directory and open AnalyticalDashboard.Report.
     - Ensure that the data sources are correctly linked to the cleaned CSV files (covid_dataset_cleaned.csv or covid_dataset_unpivot.csv).
 
@@ -208,18 +209,18 @@ This helps:
 ## Insights
 
 - The highest number of confirmed and death cases.
-- The second-highest confirmed cases but higher survival rate.
+- The second-highest confirmed cases, but higher survival rate.
 - Comparatively low numbers but significant death percentages.
-- Death rate and Survival Rate.
-- Day to day comparison of confirmed cases and death cases.
-- Day to day comparison of survival rate and death rate.
+- Death Rate and Survival Rate.
+- Day-to-day comparison of confirmed cases and deaths.
+- Day-to-day comparison of survival rate and death rate.
 
 
 ## Technology Used
 
-- Power BI : For building the interactive dashboard.
-- Python : For data cleaning and preprocessing.
-- Jupyter Notebook : For exploratory data analysis and visualization.
+- Power BI: For building the interactive dashboard.
+- Python: For data cleaning and preprocessing.
+- Jupyter Notebook: For exploratory data analysis and visualization.
 
 
 ## Future Enhancements
