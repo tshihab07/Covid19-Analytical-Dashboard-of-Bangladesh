@@ -163,7 +163,6 @@ Handling missing values was done carefully based on the type of metric:
 2. Rate Columns (Case Rate, Death Rate)
     - Rates should only be calculated when there are confirmed cases or deaths.
     - We interpolated rate values only where confirmed cases > 0, to avoid introducing false trends.
-    - Remaining missing values (e.g., at the start/end of the time series) were filled using forward/backward fill.
 
 This ensures:
 - No artificial rates appear where no cases existed
