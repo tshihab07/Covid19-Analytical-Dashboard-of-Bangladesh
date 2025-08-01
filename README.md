@@ -44,7 +44,7 @@ The dataset used in this project is sourced from Kaggle. To get data used in thi
 | Case Rate                   | Cases per 100,000 population (estimated)|
 | Death Rate                  | Deaths per 100,000 population (estimated)|
 
-All values are **cleaned**, **normalized**, and **processed**. Missing values were handled using `interpolation` and `forward fill` due to skewed time series.
+All values are **cleaned**, **normalized**, and **processed**. Missing values were handled using `interpolation` and `forward fill` due to a skewed time series.
 
 
 ## Key Features
@@ -157,7 +157,7 @@ Before importing the data into Power BI, it underwent several important preproce
 Handling missing values was done carefully based on the type of metric:
 
 1. Confirmed Cases & Deaths
-    - These represent real-world events — missing values likely mean no activity .
+    - These represent real-world events — missing values likely mean no activity.
     - Therefore, all missing values in these columns were filled with 0.
 
 2. Rate Columns (Case Rate, Death Rate)
@@ -208,7 +208,7 @@ This helps:
 ## Insights
 
 - The highest number of confirmed and death cases.
-- The second-highest confirmed cases, but higher survival rate.
+- The second-highest confirmed cases, but a higher survival rate.
 - Comparatively low numbers but significant death percentages.
 - Death Rate and Survival Rate.
 - Day-to-day comparison of confirmed cases and deaths.
